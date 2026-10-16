@@ -1,0 +1,90 @@
+@import "@fontsource-variable/bricolage-grotesque/opsz.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --paper: 244 246 251;
+    --surface: 255 255 255;
+    --raised: 248 250 253;
+    --line: 226 231 241;
+    --ink: 16 28 54;
+    --muted: 88 103 133;
+    --signal: 10 120 115;
+    --signal-soft: 224 246 244;
+    --ember: 170 86 8;
+    --ember-soft: 253 240 224;
+    --iris: 84 98 214;
+    --iris-soft: 233 236 252;
+    --danger: 200 54 70;
+    --danger-soft: 252 233 235;
+    color-scheme: light;
+  }
+  .dark {
+    --paper: 8 15 31;
+    --surface: 14 24 46;
+    --raised: 19 31 58;
+    --line: 33 48 82;
+    --ink: 230 236 247;
+    --muted: 148 163 191;
+    --signal: 44 211 201;
+    --signal-soft: 16 52 62;
+    --ember: 245 166 80;
+    --ember-soft: 58 40 18;
+    --iris: 140 152 245;
+    --iris-soft: 30 36 76;
+    --danger: 244 112 124;
+    --danger-soft: 62 22 30;
+    color-scheme: dark;
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-paper font-sans text-[15px] leading-relaxed text-ink antialiased;
+    font-feature-settings: "ss01";
+  }
+  h1, h2, h3 { @apply font-display tracking-tight text-ink; }
+  :focus-visible { @apply rounded-md outline outline-2 outline-offset-2 outline-iris; }
+  ::selection { background: rgb(var(--signal) / 0.25); }
+  input[type="search"]::-webkit-search-cancel-button { cursor: pointer; }
+}
+
+@layer components {
+  .card { @apply rounded-2xl border border-line bg-surface shadow-card; }
+  .label { @apply mb-1.5 block text-sm font-medium text-ink; }
+  .input {
+    @apply w-full rounded-xl border border-line bg-surface px-3.5 py-2.5 text-[15px] text-ink transition
+      placeholder:text-muted/70 hover:border-muted/40 focus:border-signal focus:outline-none focus:ring-4 focus:ring-signal/15
+      disabled:cursor-not-allowed disabled:bg-raised disabled:text-muted;
+  }
+  .input-error { @apply border-danger focus:border-danger focus:ring-danger/15; }
+  .num { font-variant-numeric: tabular-nums; }
+  .skeleton { @apply relative overflow-hidden rounded-md bg-line/60; }
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(90deg, transparent, rgb(var(--surface) / 0.6), transparent);
+    animation: shimmer 1.4s infinite;
+  }
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}
+
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+/* Recharts tweaks */
+.recharts-cartesian-axis-tick-value { fill: rgb(var(--muted)); font-size: 12px; }
+.recharts-tooltip-cursor { fill: rgb(var(--line) / 0.5); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
