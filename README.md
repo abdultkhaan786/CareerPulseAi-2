@@ -2,6 +2,15 @@
 
 CareerPulse measures which skills open job listings ask for, scores every job against a user's skills, and ranks the skills that would open the most roles.
 
+
+## Screenshots
+
+![Dashboard](screenshots/02-dashboard.png)
+![Market insights](screenshots/05-market-insights.png)
+![Job detail](screenshots/04-job-detail.png)
+![Dark mode](screenshots/08-dashboard-dark.png)
+
+
 ```
 CareerPulseAi/
 ├── backend/    Node.js + Express 5 + MongoDB (Mongoose 9) REST API, JWT auth   → port 5000
