@@ -3,6 +3,10 @@
 CareerPulse measures which skills open job listings ask for, scores every job against a user's skills, and ranks the skills that would open the most roles.
 
 
+## live demo
+https://career-pulse-ai-2.vercel.app
+
+
 ## Screenshots
 
 ![Dashboard](screenshots/02-dashboard.png)
